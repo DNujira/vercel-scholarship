@@ -1,0 +1,99 @@
+<%- include('../sidebarmainadmin')%>
+    <h1 style="padding-top: 30px; text-align: center; position: relative;">ตัวเลือกการคัดกรอง</h1>
+    <div class="container" style="margin-left: 30%;">
+        <form class="form-horizontal" action="/scholarships/result" method="POST">
+            <div class="form-group">
+                    <label for="" style=" padding-top: 30px;">ระบุประเภททุน</label><br>
+                    <select name="ft_stype" id="" class="form-control" style="width: 50%;">
+                        <option value="all">ทั้งหมด</option>
+                        <% for (i=0;i< scholarshipstype.length;i++) {%>
+                            <option value="<%= scholarshipstype[i]%>"><%= scholarshipstype[i]%></option>
+                        <%} %>
+                    </select>
+
+                    <label for="" style=" padding-top: 30px;">ระบุคณะ</label><br> 
+                    <select name="ft_facu" id="" class="form-control" style="width: 50%;">
+                        <option value="all">ทั้งหมด</option>
+                        <% for (i=0;i< scholarshipsfacu.length;i++) {%>
+                            <option value="<%= scholarshipsfacu[i]%>"><%= scholarshipsfacu[i]%></option>
+                        <%} %>
+                    </select>
+
+                    <label for="" style=" padding-top: 30px;">ระบุสาขา</label><br>
+                    <select name="ft_branch" id="" class="form-control" style="width: 50%;">
+                        <option value="all">ทั้งหมด</option>
+                        <% for (i=0;i< scholarshipsbranch.length;i++) {%>
+                            <option value="<%= scholarshipsbranch[i]%>"><%= scholarshipsbranch[i]%></option>
+                        <%} %>
+                    </select> 
+
+                    <label for="" style=" padding-top: 30px;">ระบุมหาวิทยาลัย</label><br> 
+                    <select name="ft_uni" id="" class="form-control" style="width: 50%;">
+                        <option value="all">ทั้งหมด</option>
+                        <% for (i=0;i< scholarshipsuni.length;i++) {%>
+                            <option value="<%= scholarshipsuni[i]%>"><%= scholarshipsuni[i]%></option>
+                        <%} %>
+                    </select><br>
+
+                    <div>
+                        <label for="" style=" padding-top: 30px;">ระบุเกรด</label>
+                        <input class="form-control" style="width: 50%;" type="number" id="gpa" min="1.00" max="4.00" step="any" value="4.00" name="ft_gpa">
+                    </div>
+
+                    <label for="" style=" padding-top: 30px;">ระบุประเทศ</label><br>
+                    <select name="ft_country" id="" class="form-control" style="width: 50%;">
+                        <option value="all">ทั้งหมด</option>
+                        <% for (i=0;i< l_country.length;i++) {%>
+                            <option value="<%= l_country[i]%>"><%= l_country[i]%></option>
+                        <%} %>
+                    </select>
+
+                    <div class="form-group" style=" padding-top: 30px;">
+                        <label >ระบุระดับการศึกษา</label>
+                        <select name="ft_sclass" id="" class="form-control" style="width: 50%;">
+                            <option value="all">ทั้งหมด</option>
+                            <option value="มัธยม">มัธยม</option>
+                            <option value="ปริญญาตรี">ปริญญาตรี</option>
+                            <option value="ปริญญาโท">ปริญญาโท</option>
+                            <option value="ปริญญาเอก">ปริญญาเอก</option>
+                        </select>
+                    </div>
+
+                    <label class="form-group " style=" padding-top: 30px;">ขอบเขตทุนการศึกษา</label>
+                    
+                    <div class="form-group" style=" padding-top: 30px;">
+                        <label>ค่าครองชีพ</label>
+                        <select name="ft_costoflive" id="" class="form-control" style="width: 50%;">
+                            <option value="all">ทั้งหมด</option>
+                            <% for (i=0;i< l_costoflive.length;i++) {%>
+                                <option value="<%= l_costoflive[i]%>"><%= l_costoflive[i]%></option>
+                            <%} %>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style=" padding-top: 30px;">
+                        <label>ค่าเล่าเรียน</label>
+                        <select name="ft_costoflean" id="" class="form-control" style="width: 50%;">
+                            <option value="all">ทั้งหมด</option>
+                            <% for (i=0;i< l_costoflean.length;i++) {%>
+                                <option value="<%= l_costoflean[i]%>"><%= l_costoflean[i]%></option>
+                            <%} %>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style=" padding-top: 30px;">
+                        <label>ค่าที่พักอาศัย</label>
+                        <select name="ft_costofabode" id="" class="form-control" style="width: 50%;">
+                            <option value="all">ทั้งหมด</option>
+                            <% for (i=0;i< l_costofabode.length;i++) {%>
+                                <option value="<%= l_costofabode[i]%>"><%= l_costofabode[i]%></option>
+                            <%} %>
+                        </select>
+                    </div>
+                <div class="form-group" style=" padding-top: 30px;">
+                    <input type="submit" value="คัดกรอง" class="btn btn-success">
+                </div>
+            </div>
+        </form>
+    </div> 
+    <%- include('../endsidebarmain')%>

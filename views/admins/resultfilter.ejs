@@ -1,0 +1,73 @@
+<%- include('../sidebarmainadmin')%>
+    <div class="container" style="margin-right: 6%;">
+        <!-- <div style="padding-left: 20px; padding-top: 20px;" >
+            <a href="/scholarships/filter">ย้อนกลับ</a>
+        </div> -->
+        <div class="container">
+            <h2 style="text-align: center; padding-top: 25px;">ผลลัพธ์</h2>
+            <table class="table table-hover table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>ชื่อทุน</th>
+                        <th>เวลาเปิด</th>
+                        <th>เวลาปิด</th>
+                        <th>ประเภททุน</th>
+                        <th>มหาวิทยาลัย</th>
+                        <th>คณะ</th>
+                        <th>ลบ</th>
+                        <th>แก้ไข</th>
+                        <th><input type="checkbox" id="check_all"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Object.values(scholarships).forEach(function(item){%>
+                        <tr>
+                            <td><a href="/scholarships/this/<%= item._id%>"><%= item.sname%></a></td>
+                            <td><%= item.opendate%></td>
+                            <td><%= item.closedate%></td>
+                            <td><%= item.stype%></td>
+                            <td><%= item.university%></td>
+                            <td><%= item.sfaculty%></td>
+                            <td><a class="btn btn-danger" href="/scholarships/delete/<%= item._id%>" onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')">ลบ</a></td>
+                            <td>
+                                <form action="/scholarships/edit" method="POST">
+                                    <input type="hidden" name="edit_id" value="<%= item._id%>">
+                                    <button type="submit" class="btn btn-primary">แก้ไข</button>
+                                </form>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="selecter_id" id="row-check" value="<%= item._id%>">
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <script type="text/javascript">
+            $(function() {
+                //If check_all checked then check all table rows
+                $("#check_all").on("click", function () {
+                    if ($("input:checkbox").prop("checked")) {
+                        $("input:checkbox[id='row-check']").prop("checked", true);
+                    } else {
+                        $("input:checkbox[id='row-check']").prop("checked", false);
+                    }
+                });
+        
+                // Check each table row checkbox
+             $("input:checkbox[id='row-check']").on("change", function () {
+                    var total_check_boxes = $("input:checkbox[id='row-check']").length;
+                    var total_checked_boxes = $("input:checkbox[id='row-check']:checked").length;
+                
+                    // If all checked manually then check check_all checkbox
+                    if (total_check_boxes === total_checked_boxes) {
+                        $("#check_all").prop("checked", true);
+                    }
+                    else {
+                        $("#check_all").prop("checked", false);
+                    }
+                });
+            });
+    </script>
+<%- include('../endsidebarmain')%>
+

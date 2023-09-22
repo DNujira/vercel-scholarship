@@ -1,0 +1,48 @@
+<%- include('../navthementop')%>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+    <div style="min-height: 740px;">
+        <h2 style="text-align: center; padding-top: 25px;">ผลลัพธ์</h2>
+        <div class="conresu" style="margin-right: 6%;">
+        <table class="table table-hover table-sm table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ชื่อทุน</th>
+                    <th>เวลาเปิด</th>
+                    <th>เวลาปิด</th>
+                    <th>ประเภททุน</th>
+                    <th>มหาวิทยาลัย</th>
+                    <th>คณะ</th>
+                    <th><input type="checkbox" id="check_all"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Object.values(scholarships).forEach(function(item){%>
+                    <tr>
+                        <td><a href="/users/this/<%= item._id%>">
+                                <%= item.sname%>
+                            </a></td>
+                        <td>
+                            <%= item.opendate%>
+                        </td>
+                        <td>
+                            <%= item.closedate%>
+                        </td>
+                        <td>
+                            <%= item.stype%>
+                        </td>
+                        <td>
+                            <%= item.university%>
+                        </td>
+                        <td>
+                            <%= item.sfaculty%>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="selecter_id" id="row-check" value="<%= item._id%>">
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+    <%- include('../navthemeend')%>

@@ -1,0 +1,1404 @@
+:root {
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgb(245, 3, 3);
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  line-height: 1.8;
+  text-align: left;
+  background-color: #ffffff;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: rgb(88, 63, 173);
+  text-decoration: none;
+}
+
+b {
+  color: #000;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+b:hover {
+  color: #D0C8CA;
+  text-decoration: none;
+}
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.table-bordered thead td, .table-bordered thead th {
+  border-bottom-width: 2px;
+}
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table-bordered td, .table-bordered th {
+  border: 1px solid #dee2e6;
+}
+.table-sm td, .table-sm th {
+  padding: 0.3rem;
+}
+.table td, .table th {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+.table-sm td, .table-sm th {
+  padding: 0.3rem;
+}
+.table thead tr {
+  color: #fff;
+  background-color: #000a;
+}
+
+/* .p-4 {
+  padding: 1.5rem !important;
+} */
+
+
+
+nav{
+  max-height: 100%;
+  min-height:  100%;
+}
+
+
+/* หน้าต่างทั้งหมด */
+
+.area{
+  top: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* background-color: rgb(104, 72, 209); */
+  /* border: 1px solid red; */
+}
+.sidearea{
+  width: 20%;
+}
+.dearea{
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* border-start-start-radius: 10px; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  background-color: #f5f5fa;
+}
+
+/* margin บน ขวา ล่าง ซ้าย */
+.article{
+  /* border: #fb0000 solid 1px; */
+  width: 100%;
+  height: auto;
+  display: flex ;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+
+}
+/* Responsive */
+@media screen and (max-width: 990px) {
+  .dearea{
+    margin-left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* border: 1px solid red; */
+    
+  }
+}
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------- หัวเว็บ -------------------------------------------------------------- */
+.topnav{
+  position: relative;
+  width: 100%;
+  display: flex;
+  height: auto;
+  background-color: rgb(104, 72, 209);
+  color: #fff;
+}
+
+.logo {
+  margin-left: 0.5rem;
+  margin-bottom: 1rem;
+  width: 20%;
+  display: flex;
+  font-size: 22px;
+  color: rgb(104, 72, 209);
+}
+
+.logo h1 span{
+  padding-right: 5px;
+  width:100%;
+  display: flex;
+  justify-content: end;
+  font-size: 14px;
+  margin-left: 30px;
+}
+/*-------------------------------------------------------- ช่องค้นหา --------------------------------------------------------*/
+.search-box {
+  display: flex;
+  width: 600px;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.search-box input{
+  margin-top: 20px;
+  margin-bottom: 35px;
+  width: 100%;
+  border-radius: 10px;
+  height: 35px;
+  padding: .5rem;
+  font-size: 18px;
+   } 
+ .search-box button{
+  margin-top: 20px;
+  margin-bottom: 35px;
+  width: 10%;
+  border-radius: 10px;
+  height: 35px;
+  border: none;
+  background-color: transparent;
+ } 
+ .searchResults{
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: 2px 3px 4px #aaaa;
+  background: #fff;
+  position: absolute;
+  z-index: 10;
+  width: 550px;
+  margin-top: 46px;
+  margin-left: 6px;
+  overflow-y: scroll;
+  text-align: start;
+}
+
+a.sresult{
+  padding: 10px 0 10px 10px;
+  display: block;
+  width: 100%;
+}
+a.sresult:hover{
+  /* padding: 10px; */
+  transition: 0.5s;
+  background-color: #0001;
+}
+
+form button {
+  margin-left: -4px;
+  border: none;
+  padding: .5rem;
+  background-color:transparent;
+}
+
+/* Responsive */
+@media screen and (max-width: 990px) {
+  .topnav{
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    padding: 2rem 0;
+    ;
+    
+  }
+  .logo{
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: .5rem 0;
+    text-align: center;
+  }
+  .search-box{
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    
+  }
+
+  form input[type="text"] {
+    width: 100%;
+  }
+  
+  form  {
+    width: 100%;
+    margin-left: 0;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+  }
+  
+}
+/* ---------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+/* -------------------------------------------------------- sidebar layout -------------------------------------------------------- */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 260px;
+  padding-top: 35px;
+  background-color: rgb(255, 255, 255);
+  border-right: 1px solid var(--border-color);
+}
+
+.menu-items{
+  margin-top: 40px;
+  height: calc(100% - 90px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* ฟอนต์ตรงชื่อเมนู */
+#sidebar ul li {
+  font-size: 16px;
+}
+
+#sidebar ul li>ul {
+  margin-left: 10px;
+}
+
+#sidebar ul li>ul li {
+  font-size: 14px;
+}
+
+/* สีตัวหนังสือที่เมนู */
+#sidebar ul li a {
+  padding: 16px;
+  display: block;
+  /* color: rgb(0, 0, 0); */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* สีหลังเอาเมาส์ชี้ตัวหนังสือตรงเมนู */
+#sidebar ul li a:hover {
+  color: rgb(88, 63, 173);
+}
+
+.menu-items ul li.active a{
+  background:  #86868aa9; 
+  color: rgb(255, 255, 255);
+}
+.menu-items ul li.active a:hover span,.menu-items ul li.active a:hover i{
+  color: rgb(255, 255, 255);
+}
+
+
+/* สีตัวหนังสือที่เมนู */
+#sidebar ul li button {
+  padding-right: 130px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: block;
+  border: none;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* สีไอค่อนหน้าเมนู */
+#sidebar ul li button span {
+  color: #000000;
+}
+
+/* สีหลังเอาเมาส์ชี้ตัวหนังสือตรงเมนู */
+#sidebar ul li button:hover {
+  margin: 10px;
+  padding: 10px 110px 10px 10px;
+  color: rgb(88, 63, 173);
+  border-radius: 10px;
+}
+.mu{
+  padding: 10px;
+  margin-right: 15px;
+  height: 20px;
+  width: 20px;
+}
+
+a.logout{
+  padding: 20px;
+  color: #000;
+  text-decoration: none;
+}
+
+a.logout:hover{
+  color: rgb(255, 0, 0);
+  text-decoration: none;
+}
+
+.Borlogout{
+  margin-top: 100%;
+  padding-bottom: 20px;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/*-------------------------------------------------------- Responsive sidebar ขยับได้ --------------------------------------------------------*/
+@media (max-width: 990px) {
+  #sidebar {
+    margin-left: -270px;
+  }
+
+  #sidebar.active {
+    margin-left: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* ---------------------------------------- หน้าข้อมูลทุนการศึกษา ---------------------------------------- */
+
+.scholarshiparea{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.detailhead{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 30px;
+  margin: 2rem 2rem;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.201);
+  width: 35%;
+}
+
+.detaillist{
+  display: grid;
+  justify-content: start;
+  align-items: center;
+  margin-left: 1rem;
+  height: 100%;
+  
+}
+
+.detaillist label h2 {
+  color: #111;
+  margin: 2rem 2rem;
+}
+
+.detaillist label sh {
+  text-align: center;
+  margin: 2rem 2rem;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto;
+  column-gap: 15px;
+  row-gap: 10px;
+}
+.detaillist label{
+  border-bottom: #0c0c0c43 solid 1px;
+  
+}
+
+
+
+/* --------------------------------------------------------------------------------------------------- */
+
+/* ------------------------------------------- หน้ารายการทุน ------------------------------------------- */
+
+
+
+.scollist{
+  margin-left: 3rem;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.sculsaria{
+  min-width: 800px;
+  position: relative;
+  width: 90%;
+  min-height: 480px;
+  height: 100%;
+  background: transparent;
+  flex-direction: column;
+  border-radius: 30px;
+}
+
+.sculslist{
+  position: relative;
+  width: 485px;
+  height: 300px;
+  background: #fff;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 2px 3px 4px #aaaa;
+  backdrop-filter: blur(20px);
+}
+
+.sculslistin{
+  position: relative;
+  width: 100%;
+  height: 308px;
+  background: #fff;
+  /* border-radius: 25px; */
+  margin-bottom: 20px;
+  box-shadow: 2px 3px 4px #aaaa;
+  backdrop-filter: blur(20px);
+}
+
+.areasculslis {
+  margin: .1rem 0;
+}
+
+.pinbtn{
+  font-size: 25px;
+  position: absolute;
+  right: 30px;
+  border-radius: 20px;
+  z-index: 2;
+  margin-top: 15%;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+.pinbtn:hover{
+  color: rgb(0, 8, 255);
+}
+
+.font-name{
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(104, 72, 209);
+  padding: 1rem;
+}
+
+.font-chile{
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  margin-left: 2rem;
+
+}
+
+.limittext{
+  width: 200px;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  display: -webkit-box; 
+  display: inline-block; 
+  -webkit-line-clamp: 1; 
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
+}
+
+.detailbut{
+  margin-left: 80%;
+  text-decoration: underline;
+  color: blue;
+}
+
+.detailbut:hover{
+  color: rgb(0, 174, 255);
+}
+
+.font-reccommand{
+  font-size: 35px;
+  font-weight: 600;
+  color: #000;
+}
+.reccommandtext{
+  min-width: 480px;
+  width: 100%;
+  height: 70px;
+  background-color: transparent;
+  text-align: center;
+}
+
+.ariagrid{
+  min-height: 745px;
+  width: 100%;
+}
+
+
+/* --------------------------------------------------------------------------------------------------- */
+
+/* -------------------------------------------- หน้าแรก ----------------------------------------------- */
+.popuppro {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+}
+
+.bordcontent{
+  text-align: center;
+  width: auto;
+  height: 400px;
+  background-color: white;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  overflow: scroll; 
+}
+
+.btnpopup{
+  border: 0px solid #888888;
+  width: 300px;
+  height: 50px;
+  background-color: limegreen;
+}
+
+.editbtnpopup{
+  border: 0px solid #888888;
+  width: 60px;
+  height: 40px;
+  background-color: orange;
+}
+
+.deletebtnpopup{
+  border: 0px solid #888888;
+  width: 60px;
+  height: 40px;
+  background-color: red;
+}
+
+.blackbtnpopup{
+  border: 0px solid #888888;
+  width: 300px;
+  height: 50px;
+  background-color: grey;
+}
+
+.popup-content {
+  text-align: center;
+  background-color: white;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid #888888;
+  width: 800px;
+  height: 720px;
+  font-weight: bolder;
+}
+
+.textinline{
+  width: 300px;
+  height: 40px;
+}
+
+.popup-content button {
+  display: block;
+  margin: 0 auto;
+}
+.show {
+  display: block;
+}
+
+
+.searchbtn{
+  text-align: center;
+  margin-left: 2px;
+  margin-top: 0px;
+  position: relative;
+  width: 90px;
+  height: 40px;
+  background: rgb(0, 102, 255);
+  border: 0px solid #888888;
+}
+
+.reloardbtn{
+  width: 90px;
+  height: 40px;
+  border: 0px solid #888888;
+  position: absolute;
+}
+/* ----------------------------------------------------------------------------------- */
+
+.profile-font{
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.mainbody{
+  display: flex;
+}
+
+.profile{
+  background-color: #fff;
+  margin-left: 50px;
+  /* margin-right: 20px; */
+  position: relative;
+  height: 350px;
+  width: 30%;
+  top: 10%;
+  backdrop-filter: blur(4px);
+  box-shadow: 2px 3px 4px #aaaa;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.profile .editprofile{
+  height: 40px;
+  width: 170px;
+  border-radius: 25px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background-color: rgb(36, 47, 255);
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.bg-pro{
+  width: 100%;
+  background-image: url("/images/666.png ");
+  background-size: cover;
+  background-position: center;
+  /* border-start-start-radius: 10px;   */
+}
+
+.overlay2{
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay2:target{
+  z-index: 2;
+  visibility: visible;
+  opacity: 1;
+}
+
+.wrapper2{
+  height: 80%;
+  margin: 70px auto;
+  padding: 20px;
+  background: #e7e7e7;
+  border-radius: 5px;
+  width: 40%;
+  position: relative;
+  transition: all 5s ease-in-out;
+  overflow: scroll;
+}
+.wrapper2 .close{
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.form-userupdate{
+  padding: 20px;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type="submit"]{
+  background-color: #413b3b;
+  color: #fff;
+  padding: 15px 50px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.button2 {
+  font-size: 1em;
+  padding: 15px ;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  background: #403e3d;
+  border-radius: 10px;
+}
+
+.box2 {
+  margin-top: 15px;
+}
+.button3{
+  font-size: 20px;
+  color: #000;
+}
+
+/* --------------------------------------------------------------------------------------------------- */
+
+/* ------------------------------------------- หน้าlogin -------------------------------------------- */
+
+.header{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding: 20px 30px;
+  background: #f5f5fa17;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 99;
+  color: #000;
+}
+
+
+.navbar a {
+  font-size: 18px;
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  margin-right: 30px;
+  position: relative;
+}
+
+.navbar .btnLogin-popup{
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 26px;
+  color: #000;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.navbar .btnLogin-popup::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: #000;
+  opacity: .85;
+}
+
+/* พื้นที่ส่วนข้อมูล */
+.bodyhome{
+  display: flex;
+  flex-direction: column;
+}
+
+.loginhead{
+  height: 30%;
+  width: 100%;
+  background-image: url("/images/scholar.jpg ");
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.section{
+  min-height: 100%;
+  background-color: #f5f5fa;
+  background-size: cover;
+  background-position: center;
+}
+
+.text-sch{
+  padding-bottom: 75px;
+  padding-top: 75px;
+  text-align: center;
+  font-size: 80px;
+  font-weight: 600;
+  color: #00000067;
+  -webkit-text-stroke: 3px rgb(255, 255, 255);
+}
+
+.box-scholarshipin{
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 50px;
+  row-gap: 10px;
+  margin-top: 44px;
+  width: 100%;
+}
+
+.box-scholarshiprec{
+  display: grid;
+  grid-template-columns: auto;
+  column-gap: 50px;
+  row-gap: 10px;
+  /* margin-top: 44px; */
+  /* width: 500px; */
+  justify-content: center;
+}
+
+.section .box-scholarship{
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 50px;
+  row-gap: 10px;
+  padding: 20px;
+  margin-top: 44px;
+  width: 100%;
+  height: 650px;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+  justify-content: center;
+}
+
+.box-scholarship{
+  /* border: 1px solid red; */
+  overflow-y: scroll; 
+  overflow-x: hidden; 
+}
+
+
+.box-botton{
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column; 
+}
+
+.wrapper{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 450px;
+  height: 128%;
+  background: transparent;
+  backdrop-filter: blur(50px);
+  box-shadow: -1px 0 10px rgba(0, 0, 0, .2);
+  border-left: 2px solid rgba(255, 255, 255, .1);
+  z-index: 100;
+  display: flex;
+  justify-content:center;
+  flex-direction: column;
+  padding: 0 40px;
+  padding-bottom: 200px;
+  opacity: 0;
+  pointer-events: none;
+  border-end-start-radius: 10px;
+  
+}
+
+.textinbox{
+  color: #000;
+  font-size: 60px;
+  font-weight: 400;
+}
+
+.scollaria {
+  width: 380px;
+  height: 350px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000;
+  opacity: 1;
+}
+
+.wrapper.active-popup{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.wrapper.active-pinned{
+  color: #00ff1e;
+}
+
+.icon-close{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 10px;
+}
+
+.icon-close i{
+  font-size: 32px;
+  color: #333;
+}
+
+.wrapper .form-box.login{
+  display:block;
+}
+
+.wrapper.active .form-box.login{
+  display:none;
+}
+
+.wrapper .form-box.register{
+  display: none;
+}
+
+.wrapper.active .form-box.register{
+  display: block;
+}
+
+.wrapper .logreg-box{
+  width: 100%;
+}
+
+.logreg-box .logreg-title{
+  text-align: center;
+  margin-bottom: 40px;
+  color: #000;
+}
+
+.logreg-title h2{
+  font-size: 32px;
+}
+
+.logreg-title p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.logreg-box .input-box{
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+  border-bottom: 2px solid #000;
+}
+
+.input-box input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+  padding-right: 25px;
+}
+
+.input-box label{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label{
+  top: -5px;
+}
+
+.input-box .icon{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 19px;
+  color: #000;
+
+}
+
+.logreg-box .remember-forgot {
+  font-size: 14.5px;
+  color: #000;
+  font-weight: 500;
+  margin: -15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.remember-forgot label input{
+  accent-color: #000;
+  margin-right: 3px;
+}
+
+.remember-forgot a {
+  color: #000;
+  text-decoration: none;
+}
+.remember-forgot a:hover{
+  text-decoration: underline;
+}
+
+.logreg-box .btn{
+  width: 100%;
+  height: 45px;
+  background: #000;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.logreg-box .logreg-link{
+  font-size: 14.5px;
+  color: #000;
+  text-align: center;
+  font-weight: 500;
+  margin: 25px 0 15px;
+}
+
+.logreg-link p a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.logreg-link p a:hover{
+  text-decoration: underline;
+}
+
+.media-option{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.media-option a{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #000;
+  margin: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  border-radius: 40px;
+  color: #000;
+  text-decoration: none;
+  transition: .5s;
+}
+
+.media-option a:hover{
+  background: rgba(255, 255, 255, .1);
+}
+
+.media-option a i{
+  font-size: 22px;
+  margin: 0 8px 1.5px 0;
+}
+
+.media-option a span{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+.popuparea{
+  height: 300;
+  width: 300;
+  background-color: #fff;
+
+}
+
+.box {
+  width: 40%;
+  margin: 0 auto;
+  background: #FFFF;
+  padding: 35px;
+  border: 2px solid #00ff1e;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+.button {
+  font-size: 1em;
+  padding: 10px;
+  color: #fff;
+  border: 2px solid #06D85F;
+  border-radius: 20px/50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.button:hover {
+  background: #06D85F;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 200ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #FFFF;
+  border-radius: 10px;
+  width: 30%;
+  position: fixed;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow-x: auto;
+}
+
+@media screen and (max-width: 350px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+
+
+/* --------------------------------------------------------------------------------------------------- */
+
+/* ------------------------------------------- หน้าคัดกรอง --------------------------------------------- */
+
+.areaspace{
+  width: 100%;
+}
+
+.form-control{
+  height: 40px;
+  width: 100%;
+}
+.container {
+  margin-top: 20px;
+  background: #ffffff;
+  width: 900px;
+  min-height: 590px;
+  padding: 2rem 3em;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: 2px 3px 4px #aaaa;
+}
+
+
+.conresu{
+  margin-top: 40px;
+  background: #ffffff;
+  width: 900px;
+  min-height: 590px;
+  padding: 2rem 3em;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: 2px 3px 4px #aaaa;
+}
+
+.text-menu{
+  /* margin-left: 120px; */
+  margin-top: 10px;
+  text-align: start;
+  width: 150px;
+}
+
+
+/* --------------------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------------------- */
+
+.Sarea{
+  background: #ffffff;
+  width: 900px;
+  height: 100%;
+  padding: 2rem 3em;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: 2px 3px 4px #aaaa;
+}
+.scholardetail.detail{
+  padding-bottom: 30px;
+  width: 780px;
+  border-bottom: 2px solid #aaaaaaaa;
+  row-gap: 5px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 400px 400px;
+}
+
+.scholardetail.information{
+  padding-bottom: 30px;
+  width:780px;
+  border-bottom: 2px solid #aaaaaaaa;
+  row-gap: 5px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 400px 400px;
+}
+
+.scholardetail.property{
+  padding-bottom: 30px;
+  width: 780px;
+  border-bottom: 2px solid #aaaaaaaa;
+  row-gap: 5px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 400px 400px;
+
+}
+.scholardetail.other{
+  padding-bottom: 30px;
+  width: 780px;
+  border-bottom: 2px solid #aaaaaaaa;
+  row-gap: 5px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 400px 400px;
+
+}
+.scholardetail.other label h3{
+  text-decoration:  underline;
+}
+.url{
+  color: #6027ef;
+  text-decoration: underline;
+}
+/* --------------------------------------------------------------------------------------------------- */
+
+.fali{
+  width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+.poped{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+.headpop{
+  display: inline;
+}
+
+.depop{
+  width: 400px;
+}

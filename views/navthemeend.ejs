@@ -1,0 +1,20 @@
+
+			</aside>
+		</div>
+	</div>
+	<script>
+		function activec() {
+			const list = [1,2,3,4,5,6];
+			let check = document.getElementById("check").innerHTML;
+			console.log(check);
+			for (var i=1; i<list.length; i++){
+				if(i == check){
+					document.getElementById(check).className="active";
+					console.log(i);
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<%- include('../sidebarmainadmin')%>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+    <h1 style="padding-top: 25px; text-align: center;">เพิ่มทุน</h1>
+    <div style="text-align: center;">
+        <div class="container" style="text-align: center;">
+            <div class="conis">
+                <form method="POST" action="/scholarships/insert">
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">ชื่อทุน</label>
+                    </div>
+                    <div>
+                        <input type="text" class="insput" name="sname">
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">ประเภททุน</label>
+                    </div>
+                    <div>
+                        <select name="stype" id="stype" class="insput">
+                            <option value=""></option>
+                            <% for (i=0;i< scholarshipstype.length;i++) {%>
+                                <option value="<%= scholarshipstype[i]%>">
+                                    <%= scholarshipstype[i]%>
+                                </option>
+                                <%} %>
+                        </select>
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">วันที่เปิดรับ</label>
+                    </div>
+                    <div>
+                        <input type="date" class="insput" name="opendate">
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">วันที่ปิดรับ</label>
+                    </div>
+                    <div>
+                        <input type="date" class="insput" name="closedate">
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">ระดับการศึกษา</label>
+                    </div>
+                    <div>
+                        <select name="sclass" id="" class="insput">
+                            <option value=""></option>
+                            <option value="มัธยม">มัธยม</option>
+                            <option value="ปริญญาตรี">ปริญญาตรี</option>
+                            <option value="ปริญญาโท">ปริญญาโท</option>
+                            <option value="ปริญญาเอก">ปริญญาเอก</option>
+                        </select>
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">คณะ</label>
+                    </div>
+                    <div>
+                        <select name="sfaculty" id="" class="insput">
+                            <option value=""></option>
+                            <% Object.values(l_facu).forEach(function(item){%>
+                                <option value="<%= item%>">
+                                    <%= item%>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">สาขา</label>
+                    </div>
+                    <div>
+                        <select name="sbranch" id="" class="insput">
+                            <option value=""></option>
+                            <% Object.values(l_branch).forEach(function(item){%>
+                                <option value="<%= item%>">
+                                    <%= item%>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">เกรด</label>
+                    </div>
+                    <div>
+                        <input type="number" class="insput" name="sgpa" min="1.00" max="4.00" step="any" required>
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">ประเทศ</label>
+                    </div>
+                    <div>
+                        <input type="text" class="insput" name="country" required>
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">มหาวิทยาลัย</label>
+                    </div>
+                    <div>
+                        <input type="text" class="insput" name="university" required>
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">ค่าครองชีพ</label>
+                    </div>
+                    <div>
+                        <input type="text" class="insput" name="costoflive">
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">ค่าศึกษา</label>
+                    </div>
+                    <div>
+                        <input type="text" class="insput" name="costoflean">
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">ค่าที่พักอาศัย</label>
+                    </div>
+                    <div>
+                        <input type="text" class="insput" name="costofabode">
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">คะแนน TOEIC</label>
+                    </div>
+                    <div>
+                        <input type="number" class="insput" name="stoeic">
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">คะแนน IELTS</label>
+                    </div>
+                    <div>
+                        <input type="number" class="insput" name="sielts">
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">คะแนน TOEFL</label></div>
+                    <div>
+                        <input type="number" class="insput" name="stoefl">
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">ผู้ให้ทุน</label></div>
+                    <div>
+                        <input type="text" class="insput" name="sgiver">
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">url</label></div>
+                    <div>
+                        <input type="url" class="insput" name="url">
+                    </div>
+                    <div style="text-align: start; margin-left: 250px;">
+                    <label class="control-label">วันที่เพิ่มข้อมูล</label></div>
+                    <div>
+                        <input type="date" class="insput" name="scrapdate">
+                    </div>
+
+
+                    <input type="submit" onclick="alertFunction2()" id="demo" value="บันทึกข้อมูล"
+                        class="btn btn-success">
+
+            </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script type="text/javascript">
+        new MultiSelectTag('stype')
+        function myFunction() {
+            let text;
+            let newstype = prompt("ระบุประเภททุนใหม่");
+            if (newstype == null || newstype == "") {
+                text = "ไม่ได้ระบุ";
+            } else {
+                text = "เพิ่ม " + newstype + " สำเร็จ";
+            }
+            document.getElementById("newstype").innerHTML = text;
+        }
+
+        function alertFunction2() {
+            var txt;
+            if (confirm("เพิ่มทุนสำเร็จ!!!")) {
+                txt = "ทุนถูกเพิ่มไปยังฐานข้อมูล!";
+            }
+            document.getElementById("demo").innerHTML = txt;
+        }
+
+    </script>
+    <%- include('../endsidebarmain')%>

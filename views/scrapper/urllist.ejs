@@ -1,0 +1,88 @@
+<%- include('../sidebarmainadmin')%>
+<p hidden id="check" >6</p>
+    <div class="container" style="margin-right: 7%;">
+        <div class="container">
+            <h2 style="text-align: center; padding-top: 25px; margin-bottom: 30px;">รายการเว็บไซต์</h2>
+
+            <!-- <div style="margin-bottom: 20px;">
+                <div style="text-align: end;">
+                    <a class="btn del" href="/scholarships/filter">ตัวกรองการค้นหา</a>
+                    <a class="btn add" href="/scholarships/insertdata">เพิ่มทุน</a>
+                </div>
+                <form action="/scholarships/gettextsearch" method="post" style="margin-top: 20px;">
+                    <a class="search-box" style="padding-right: 2%;">
+                        <i class="uil uil-search"></i>
+                        <input type="text" onkeyup="sendData(this)" name="keysearch" placeholder="   search here" style="margin-left: 5px; height: 40px; width: 97%; border-radius: 10px;">
+                        <section id="searchResults"></section>
+                    </a>
+                    <button type="submit">ค้นหา</button>
+                </form>
+            </div> -->
+            <!-- <div class="bordcontent"> -->
+            <table class="table table-hover table-sm table-striped">
+                <thead>
+                    <tr>
+                        <th style="width: 40px; text-align: center">#</th>
+                        <th style="height: 1px; width: 250px;">ชื่อ web</th>
+                        <th>จำนวน url</th>
+                        <th>จำนวนทุนทั้งหมด</th>
+                        <th>เวลาสกัดข้อมูล</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Object.values(urls).forEach(function(item, index){%>
+                        <tr>
+                            <td style="width: 40px; text-align: center">
+                                <%= index + 1%>
+                            </td>
+                            <td>
+                                <%= item.webname%>
+                                <a href="<%= item.starturl%>" style="text-decoration: underline;">#เยี่ยมชม</a>
+                            </td>
+                            <td>
+                                <%= item.url.length%>
+                                <a href="/scrapper/this/<%= item._id%>" style="text-decoration: underline;">#go</a>
+                            </td>
+                            <td>
+                                -
+                            </td>
+                            <td>
+                                -
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <!-- </div> -->
+    </div>
+
+    <script>
+        function sendData(e) {
+            const searchResults = document.getElementById('searchResults');
+            fetch('getResult', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    payload: e.value
+                })
+            }).then(res => res.json()).then(data => {
+                let payload = data.payload;
+                searchResults.innerHTML = '';
+                if (payload.length < 1) {
+                    searchResults.innerHTML = '<p>Sorry. Nothing Found.</p>';
+                    return;
+                }
+                payload.forEach((item, index) => {
+                    if (index > 0) {
+                        searchResults.innerHTML += '<hr>';
+                        searchResults.innerHTML += `<p>${item.sname}</p>`;
+                    }
+                });
+                return;
+            });
+        }
+    </script>
+    <%- include('../endsidebarmain')%>

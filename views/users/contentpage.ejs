@@ -1,0 +1,395 @@
+<%- include('../navthementop')%>
+    <div class="ariagrid">
+        <div style="text-align: -webkit-center;">
+            <div class="reccommandtext" style="margin-top: 40px;">
+                <label for="" class="font-reccommand">RECCOMEND FOR YOU</label>
+            </div>
+        </div>
+        <section style="position: sticky; top: 0; text-align: -webkit-center; z-index: 1;">
+            <div class="search-box">
+                <form action="/users/gettextsearch" method="post" style="margin-top: 20px;">
+                    <a class="search-box" style="padding-right: 2%;">
+                        <i class="uil uil-search"></i>
+                        <input type="text" onkeyup="sendData(this)" name="keysearch" placeholder="   search here"
+                            style="margin-left: 5px; height: 40px; width: 97%; border-radius: 10px; padding-left: 10px;">
+                        <section id="searchResults" class="searchResults"></section>
+                    </a>
+                    <!-- <button type="submit">ค้นหา</button> -->
+                </form>
+                <div>
+                    <button>
+                        <a href="#divTwo" class="button3 fa fa-filter" aria-hidden="true"></a>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <div class="mainbody">
+            <div class="profile">
+                <p hidden id="emailinpage">
+                    <%=userdata.uemail%>
+                </p>
+                <label for="" class="profile-font"
+                    style="font-size: 40px; font-weight: 600; color: #000;">Profile</label><br>
+                <div class="grid-container" style="color: #000; font-weight: 300;">
+                    <b><label for="" class="profile-font">Name : <%= userdata.ufname%>
+                        </label></b>
+                    <b style="text-overflow: ellipsis; overflow: hidden;  white-space: nowrap; padding: 5px;"><label
+                            for="" class="profile-font">Faculty : <%= userdata.ufaculty%>
+                        </label></b>
+                    <b><label for="" class="profile-font">Major : <%= userdata.ubranch%>
+                        </label></b>
+                    <b><label for="" class="profile-font">Degree : <%= userdata.uclass%>
+                        </label></b>
+                    <b><label for="" class="profile-font">GPA : <%= userdata.ugpa%></label></b>
+                </div>
+                <div class="box2">
+                    <a href="#divOne" class="button2">Edit</a>
+                </div>
+            </div>
+            <div class="scholararea">
+                <div class="box-scholarship">
+                    <div class="sculsaria">
+                        <div class="scollist">
+                            <div class="box-scholarshiprec">
+                                <% Object.values(rec).forEach(function(item){%>
+                                    <div class="sculslist">
+                                        <div class="areasculslist">
+                                            <form action="/users/pinin" method="POST">
+                                                <input type="hidden" value="page1" name="whatpage">
+                                                <input type="hidden" name="pin_id" value="<%= item._id%>">
+                                                <button type="submit" class="pinbtn"><span
+                                                        class="fa fa-bookmark-o"></span></button>
+                                            </form>
+                                            <div class="box-top">
+                                                <label for="" class="font-name">
+                                                    <%= item.sname%>
+                                                </label>
+                                            </div>
+                                            <div class="box-botton">
+                                                <% if (item.stype !==null && item.stype !=="" ) { %>
+                                                    <label for="" class="font-chile">
+                                                        <%= item.stype%>
+                                                    </label>
+                                                    <% } %>
+
+                                                        <% if (item.sclass!==null && item.sclass !=="" ) { %>
+                                                            <label for="" class="font-chile">
+                                                                <%= item.sclass%>
+                                                            </label>
+                                                            <% } %>
+
+                                                                <% if (item.sfaculty !==null && item.sfaculty !=="" ) {
+                                                                    %>
+                                                                    <label for="" class="font-chile">
+                                                                        <%= item.sfaculty%>
+                                                                    </label>
+                                                                    <% } %>
+
+                                                                        <% if (item.sbranch!==null && item.sbranch !==""
+                                                                            ) { %>
+                                                                            <label for="" class="font-chile">
+                                                                                <%= item.sbranch%>
+                                                                            </label>
+                                                                            <% } %>
+
+                                                                                <% if (item.university !==null &&
+                                                                                    item.university !=="" ) { %>
+                                                                                    <label for="" class="font-chile">
+                                                                                        <%= item.university %>
+                                                                                    </label>
+                                                                                    <% } %>
+
+                                                                                        <% if (item.pinnedcount !==null
+                                                                                            && item.pinnedcount !=="" )
+                                                                                            { %>
+                                                                                            <label for=""
+                                                                                                class="font-chile">จำนวนการปักหมุด
+                                                                                                :
+                                                                                                <%= item.pinnedcount%>
+                                                                                            </label>
+                                                                                            <% } %>
+
+                                                                                                <% if (item.closedate
+                                                                                                    !==null &&
+                                                                                                    item.closedate !==""
+                                                                                                    ) { %>
+                                                                                                    <label for=""
+                                                                                                        class="font-chile">
+                                                                                                        <%=
+                                                                                                            item.closedate%>
+                                                                                                    </label>
+                                                                                                    <% } %>
+
+                                                                                                        <a href="/users/this/<%= item._id%>"
+                                                                                                            class="detailbut">ดูรายละเอียด</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay2" id="divOne">
+                    <div class="wrapper2">
+                        <h3 style="text-align: center;"> ข้อมูลผู้ใช้ </h3>
+                        <form class="form-userupdate" method="POST" action="/users/userupdate">
+                            <input type="hidden" value="<%= userdata._id%>" name="update_id">
+                            <a href="#" class="close">&times;</a>
+                            <label for="" class="profile-font">E-mail : <input type="text" name="uemail"
+                                    value="<%= userdata.uemail%>" readonly></label>
+                            <label for="" class="profile-font">Name : <input type="text" name="ufname"
+                                    value="<%= userdata.ufname%>"></label>
+                            <label for="" class="profile-font">Faculty :
+                                <select name="ufaculty" id="ufaculty" class="fali">
+                                    <option value="<%= userdata.ufaculty%>">
+                                        <%= userdata.ufaculty%>
+                                    </option>
+                                    <% for (i=0;i< l_facu.length;i++) {%>
+                                        <option value="<%= l_facu[i]%>">
+                                            <%= l_facu[i]%>
+                                        </option>
+                                        <%} %>
+                                </select>
+                            </label>
+                            <label for="" class="profile-font">Major :
+                                <select name="ubranch" id="ubranch" class="fali">
+                                    <option value="<%= userdata.ubranch%>">
+                                        <%= userdata.ubranch%>
+                                    </option>
+                                    <% for (i=0;i< l_branch.length;i++) {%>
+                                        <option value="<%= l_branch[i]%>">
+                                            <%= l_branch[i]%>
+                                        </option>
+                                        <%} %>
+                                </select>
+                            </label>
+                            <label for="" class="profile-font">Degree :
+                                <select name="uclass" id="uclass" class="fali">
+                                    <option value="<%= userdata.uclass%>">
+                                        <%= userdata.uclass%>
+                                    </option>
+                                    <% for (i=0;i< s_class.length;i++) {%>
+                                        <option value="<%= s_class[i]%>">
+                                            <%= s_class[i]%>
+                                        </option>
+                                        <%} %>
+                                </select>
+                            </label>
+                            <label for="" class="profile-font">GPA : <input type="text" name="ugpa"
+                                    value="<%= userdata.ugpa%>"></label>
+                            <label for="" class="profile-font">PHONE : <input type="text" name="phonenumber"
+                                    value="<%= userdata.phonenumber%>"></label>
+                            <label for="" class="profile-font">Type :
+                                <select name="ustype" id="ustype" class="fali">
+                                    <option value="<%= userdata.ustype%>">
+                                        <%= userdata.ustype%>
+                                    </option>
+                                    <% for (i=0;i< scholarshipstype.length;i++) {%>
+                                        <option value="<%= scholarshipstype[i]%>">
+                                            <%= scholarshipstype[i]%>
+                                        </option>
+                                        <%} %>
+                                </select>
+                            </label>
+                            <label for="" class="profile-font">IELTS : <input type="text" name="uielts"
+                                    value="<%= userdata.uielts%>"></label>
+                            <label for="" class="profile-font">OEFL : <input type="text" name="utoefl"
+                                    value="<%= userdata.utoefl%>"></label>
+                            <label for="" class="profile-font">TOEIC : <input type="text" name="utoeic"
+                                    value="<%= userdata.utoeic%>"></label>
+
+                            <button>
+                                <input type="submit" value="แก้ไขข้อมูล" class="btn-userupdate">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="overlay2" id="divTwo">
+                    <div class="wrapper2">
+                        <div class="poped">
+                            <div class="headpop">
+                                <h3 style="text-align: center;"> คัดกรองทุนการศึกษา </h3>
+                                <span><a href="#" class="close">&times;</a></span>
+                            </div>
+                            <div class="depop">
+                                <form class="form-userupdate" method="POST" action="/users/result">
+                                    <div class="text-menu">
+                                        <label for="">ระบุประเภททุน</label>
+                                    </div>
+                                    <select name="ft_stype" id="" class="form-control">
+                                        <option value="all">ทั้งหมด</option>
+                                        <% for (i=0;i< scholarshipstype.length;i++) {%>
+                                            <option value="<%= scholarshipstype[i]%>">
+                                                <%= scholarshipstype[i]%>
+                                            </option>
+                                            <%} %>
+                                    </select>
+                                    <div class="text-menu">
+                                        <label for="">ระบุคณะ</label>
+                                    </div>
+                                    <select name="ft_facu" id="" class="form-control">
+                                        <option value="all">ทั้งหมด</option>
+                                        <% for (i=0;i< l_facu.length;i++) {%>
+                                            <option value="<%= l_facu[i]%>">
+                                                <%= l_facu[i]%>
+                                            </option>
+                                            <%} %>
+                                    </select>
+
+                                    <div class="text-menu">
+                                        <label for="">ระบุสาขา</label>
+                                    </div>
+                                    <select name="ft_branch" id="" class="form-control">
+                                        <option value="all">ทั้งหมด</option>
+                                        <% for (i=0;i< l_branch.length;i++) {%>
+                                            <option value="<%= l_branch[i]%>">
+                                                <%= l_branch[i]%>
+                                            </option>
+                                            <%} %>
+                                    </select>
+
+                                    <div class="text-menu">
+                                        <label for="">ระบุมหาวิทยาลัย</label>
+                                    </div>
+                                    <select name="ft_uni" id="" class="form-control">
+                                        <option value="all">ทั้งหมด</option>
+                                        <% for (i=0;i< university.length;i++) {%>
+                                            <option value="<%= university[i]%>">
+                                                <%= university[i]%>
+                                            </option>
+                                            <%} %>
+                                    </select>
+
+                                    <div>
+                                        <div class="text-menu">
+                                            <label for="">ระบุเกรด</label>
+                                        </div>
+                                        <input class="form-control" type="number" id="gpa" min="1.00" max="4.00"
+                                            step="any" value="4.00" name="ft_gpa">
+                                    </div>
+                                    <div>
+                                        <div class="text-menu">
+                                            <label for="">ระบุประเทศ</label>
+                                        </div>
+                                    </div>
+                                    <select name="ft_country" id="" class="form-control" \>
+                                        <option value="all">ทั้งหมด</option>
+                                        <% for (i=0;i< l_country.length;i++) {%>
+                                            <option value="<%= l_country[i]%>">
+                                                <%= l_country[i]%>
+                                            </option>
+                                            <%} %>
+                                    </select>
+
+                                    <div>
+                                        <div class="text-menu">
+                                            <label>ระบุระดับการศึกษา</label>
+                                        </div>
+                                        <select name="ft_sclass" id="" class="form-control">
+                                            <option value="all">ทั้งหมด</option>
+                                            <option value="มัธยม">มัธยม</option>
+                                            <option value="ปริญญาตรี">ปริญญาตรี</option>
+                                            <option value="ปริญญาโท">ปริญญาโท</option>
+                                            <option value="ปริญญาเอก">ปริญญาเอก</option>
+                                        </select>
+                                    </div>
+                                    <div style="text-align: center; font-size: 20px; margin-top: 20px; font-weight: 600;">
+                                    <label >ขอบเขตทุนการศึกษา</label>
+                                    </div>
+                                    <div>
+                                        <div class="text-menu">
+                                            <label>ค่าครองชีพ</label>
+                                        </div>
+                                        <select name="ft_costoflive" id="" class="form-control">
+                                            <option value="all">ทั้งหมด</option>
+                                            <% for (i=0;i< l_costoflive.length;i++) {%>
+                                                <option value="<%= l_costoflive[i]%>">
+                                                    <%= l_costoflive[i]%>
+                                                </option>
+                                                <%} %>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <div class="text-menu">
+                                            <label>ค่าเล่าเรียน</label>
+                                        </div>
+                                        <select name="ft_costoflean" id="" class="form-control">
+                                            <option value="all">ทั้งหมด</option>
+                                            <% for (i=0;i< l_costoflean.length;i++) {%>
+                                                <option value="<%= l_costoflean[i]%>">
+                                                    <%= l_costoflean[i]%>
+                                                </option>
+                                                <%} %>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <div class="text-menu">
+                                            <label>ค่าที่พักอาศัย</label>
+                                        </div>
+                                        <select name="ft_costofabode" id="" class="form-control">
+                                            <option value="all">ทั้งหมด</option>
+                                            <% for (i=0;i< l_costofabode.length;i++) {%>
+                                                <option value="<%= l_costofabode[i]%>">
+                                                    <%= l_costofabode[i]%>
+                                                </option>
+                                                <%} %>
+                                        </select>
+                                    </div>
+                                    <div style="margin-top: 20px; text-align: center;">
+                                        <input type="submit" value="คัดกรอง" class="btn btn-success">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function sendData(e) {
+            const searchResults = document.getElementById('searchResults');
+            fetch('getResult', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ payload: e.value })
+            }).then(res => res.json()).then(data => {
+                let payload = data.payload;
+                searchResults.innerHTML = '';
+                if (payload.length < 1) {
+                    searchResults.innerHTML = '<p>Sorry. Nothing Found.</p>';
+                    return;
+                }
+                payload.forEach((item, index) => {
+                    if (index > 0) {
+                        // searchResults.innerHTML += '<br>';
+                        searchResults.innerHTML += `<a class='sresult'>${item.sname}</a>`;
+                    }
+                });
+                return;
+            });
+        }
+
+
+    </script>
+    <script>
+        myButton.addEventListener("click", function () {
+            myPopup.classList.add("show");
+        });
+        closePopup.addEventListener("click", function () {
+            myPopup.classList.remove("show");
+        });
+        window.addEventListener("click", function (event) {
+            if (event.target == myPopup) {
+                myPopup.classList.remove("show");
+            }
+        });
+    </script>
+    <%- include('../navthemeend')%>

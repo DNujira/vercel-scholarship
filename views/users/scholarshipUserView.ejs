@@ -1,0 +1,101 @@
+<%- include('../navthementop')%>
+<p hidden id="check" >2</p>
+    <section>
+        <div class="ariagrid">
+            <div class="reccommandtext" style="text-align: -webkit-center; margin-top: 40px;">
+                <label for="" class="font-reccommand">รายการทุนการศึกษา</label>
+            </div>
+            <section style="position: sticky; top: 0; text-align: -webkit-center; z-index: 1;">
+                <div class="search-box">
+                    <form action="/users/gettextsearch" method="post" style="margin-top: 20px;">
+                        <a class="search-box" style="padding-right: 2%;">
+                            <i class="uil uil-search"></i>
+                            <input type="text" onkeyup="sendData(this)" name="keysearch" placeholder="   search here" style="margin-left: 5px; height: 40px; width: 97%; border-radius: 10px; padding-left: 10px;">
+                            <section id="searchResults" class="searchResults"></section>
+                        </a>
+                        <!-- <button type="submit">ค้นหา</button> -->
+                    </form>
+                    <div>
+                    <button> 
+                        <a href="#divTwo" class="button3 fa fa-filter"  aria-hidden="true" ></a>
+                    </button>
+                    </div>
+                </div>
+            </section>
+                    <div class="sculsaria"> 
+                        <div class="scollist">
+                            <div class="box-scholarshipin">
+                            <% Object.values(scholarships).forEach(function(item){%>
+                                <div class="sculslist">
+                                    <div class="areasculslist">
+                                        <form action="/users/pinin" method="POST">
+                                            <input type="hidden" value="page1" name="whatpage">
+                                            <input type="hidden" name="pin_id" value="<%= item._id%>">
+                                            <button type="submit" class="pinbtn"><span class="fa fa-bookmark-o"></span></button>
+                                        </form>
+                                        <div class="box-top">
+                                            <label for="" class="font-name">
+                                                <%= item.sname%>
+                                            </label>
+                                        </div>
+                                        <div class="box-botton">
+                                            <div class="limittext">
+                                                <label for="" class="font-chile">
+                                                    <%= item.sfaculty%>
+                                                </label>
+                                            </div>
+
+                                            <label for="" class="font-chile">
+                                                <%= item.sclass%>
+                                            </label>
+                                            <label for="" class="font-chile">
+                                                จำนวนการปักหมุด : <%= item.pinnedcount%>
+                                            </label>
+                                            <label for="" class="font-chile">
+                                                จำนวนผู้เข้าชม : <%= item.watchcount%>
+                                            </label>
+                                            <label for="" class="font-chile">
+                                                เปิดรับ : <%= item.opendate%>
+                                            </label>
+                                            <label for="" class="font-chile">
+                                                ปิดรับ : <%= item.closedate%>
+                                            </label>
+                                            <a class="detailbut" href="/users/this/<%= item._id%>">ดูรายละเอียด</a>
+                                        </div>
+                                    </div><br>
+                                </div>
+                                <% }) %>
+
+                        </div>
+                    </div>
+                </div>
+                
+        </div>
+    </section>
+    <script>
+        function sendData(e) {
+            const searchResults = document.getElementById('searchResults');
+            fetch('getResult', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ payload: e.value })
+            }).then(res => res.json()).then(data => {
+                let payload = data.payload;
+                searchResults.innerHTML = '';
+                if (payload.length < 1) {
+                    searchResults.innerHTML = '<p>Sorry. Nothing Found.</p>';
+                    return;
+                }
+                payload.forEach((item, index) => {
+                    if (index > 0) {
+                        // searchResults.innerHTML += '<br>';
+                        searchResults.innerHTML += `<a class='sresult'>${item.sname}</a>`;
+                    }
+                });
+                return;
+            });
+        }
+        
+        
+    </script>
+    <%- include('../navthemeend')%>
